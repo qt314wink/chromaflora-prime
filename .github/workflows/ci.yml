@@ -11,9 +11,6 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  # ============================================
-  # JOB 1 — Type Check
-  # ============================================
   typecheck:
     name: TypeScript
     runs-on: ubuntu-latest
@@ -25,17 +22,13 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: npm
 
       - name: Install deps
-        run: npm ci
+        run: npm install --legacy-peer-deps
 
       - name: Type check
         run: npm run type-check
 
-  # ============================================
-  # JOB 2 — Lint
-  # ============================================
   lint:
     name: Lint
     runs-on: ubuntu-latest
@@ -47,10 +40,9 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: npm
 
       - name: Install deps
-        run: npm ci
+        run: npm install --legacy-peer-deps
 
       - name: Lint
         run: npm run lint
@@ -58,10 +50,6 @@ jobs:
       - name: Format check
         run: npm run format:check
 
-  # ============================================
-  # JOB 3 — Build
-  # Runs only after typecheck + lint pass
-  # ============================================
   build:
     name: Next.js Build
     runs-on: ubuntu-latest
@@ -74,10 +62,9 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: npm
 
       - name: Install deps
-        run: npm ci
+        run: npm install --legacy-peer-deps
 
       - name: Build
         run: npm run build
