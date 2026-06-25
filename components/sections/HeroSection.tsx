@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 import { narrativeEngine } from '@/lib/narrative';
 import { glitchText } from '@/lib/utils';
 import { useNarrativeStore } from '@/lib/store';
+import { useScrollCorruption } from '@/hooks/useScrollCorruption';
 import { Button, Badge } from '@/components/ui';
 
 const TITLE = 'CHROMAFLORA PRIME';
@@ -24,6 +25,9 @@ export function HeroSection() {
   const [displayTitle, setDisplayTitle] = useState(TITLE);
   const [tick, setTick] = useState(0);
 
+  // Wire scroll → corruption for the whole page
+  useScrollCorruption();
+
   useEffect(() => {
     if (corruption < 0.1) { setDisplayTitle(TITLE); return; }
     const id = setInterval(() => setTick((t) => t + 1), 80);
@@ -40,7 +44,6 @@ export function HeroSection() {
       id="hero"
       className="relative min-h-screen flex flex-col items-center justify-center text-center px-4 pt-16"
     >
-      {/* Ambient blobs */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
         <div className="absolute top-1/4 left-1/4 w-96 h-96 rounded-full bg-rainbow-purple/10 animate-blob-morph blur-3xl" />
         <div className="absolute bottom-1/4 right-1/4 w-80 h-80 rounded-full bg-rainbow-cyan/10 animate-blob-morph blur-3xl" style={{ animationDelay: '-5s' }} />
