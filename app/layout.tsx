@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from 'next';
 import { Inter, Space_Grotesk, JetBrains_Mono } from 'next/font/google';
 import './globals.css';
+import { Navbar } from '@/components/layout/Navbar';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -111,6 +112,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         >
           Skip to main content
         </a>
+        <Navbar />
         <main id="main-content" className="relative">
           {children}
         </main>
