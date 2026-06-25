@@ -1,0 +1,156 @@
+import type { Config } from 'tailwindcss';
+
+const config: Config = {
+  darkMode: ['class'],
+  content: [
+    './pages/**/*.{js,ts,jsx,tsx,mdx}',
+    './components/**/*.{js,ts,jsx,tsx,mdx}',
+    './app/**/*.{js,ts,jsx,tsx,mdx}',
+    './lib/**/*.{js,ts}',
+  ],
+  theme: {
+    extend: {
+      colors: {
+        'bg-primary': 'var(--color-bg-primary)',
+        'bg-secondary': 'var(--color-bg-secondary)',
+        'bg-tertiary': 'var(--color-bg-tertiary)',
+        surface: 'var(--color-surface)',
+        'rainbow-red': 'var(--color-rainbow-red)',
+        'rainbow-orange': 'var(--color-rainbow-orange)',
+        'rainbow-yellow': 'var(--color-rainbow-yellow)',
+        'rainbow-green': 'var(--color-rainbow-green)',
+        'rainbow-cyan': 'var(--color-rainbow-cyan)',
+        'rainbow-blue': 'var(--color-rainbow-blue)',
+        'rainbow-purple': 'var(--color-rainbow-purple)',
+        'rainbow-magenta': 'var(--color-rainbow-magenta)',
+        'text-primary': 'var(--color-text-primary)',
+        'text-secondary': 'var(--color-text-secondary)',
+        'text-muted': 'var(--color-text-muted)',
+        'border-glass': 'var(--color-border)',
+        'glass-bg': 'var(--color-glass-bg)',
+        'glass-border': 'var(--color-glass-border)',
+        background: 'hsl(var(--background))',
+        foreground: 'hsl(var(--foreground))',
+        card: { DEFAULT: 'hsl(var(--card))', foreground: 'hsl(var(--card-foreground))' },
+        popover: { DEFAULT: 'hsl(var(--popover))', foreground: 'hsl(var(--popover-foreground))' },
+        primary: { DEFAULT: 'hsl(var(--primary))', foreground: 'hsl(var(--primary-foreground))' },
+        secondary: { DEFAULT: 'hsl(var(--secondary))', foreground: 'hsl(var(--secondary-foreground))' },
+        muted: { DEFAULT: 'hsl(var(--muted))', foreground: 'hsl(var(--muted-foreground))' },
+        accent: { DEFAULT: 'hsl(var(--accent))', foreground: 'hsl(var(--accent-foreground))' },
+        destructive: { DEFAULT: 'hsl(var(--destructive))', foreground: 'hsl(var(--destructive-foreground))' },
+        border: 'hsl(var(--border))',
+        input: 'hsl(var(--input))',
+        ring: 'hsl(var(--ring))',
+      },
+      fontFamily: {
+        sans: ['var(--font-family-primary)', 'system-ui', 'sans-serif'],
+        display: ['var(--font-family-display)', 'sans-serif'],
+        mono: ['var(--font-family-mono)', 'monospace'],
+      },
+      fontSize: {
+        xs: 'var(--text-xs)', sm: 'var(--text-sm)', base: 'var(--text-base)',
+        lg: 'var(--text-lg)', xl: 'var(--text-xl)', '2xl': 'var(--text-2xl)',
+        '3xl': 'var(--text-3xl)', '4xl': 'var(--text-4xl)', '5xl': 'var(--text-5xl)',
+        '6xl': 'var(--text-6xl)', '7xl': 'var(--text-7xl)',
+      },
+      fontWeight: {
+        light: 'var(--font-weight-light)', normal: 'var(--font-weight-regular)',
+        medium: 'var(--font-weight-medium)', semibold: 'var(--font-weight-semibold)',
+        bold: 'var(--font-weight-bold)',
+      },
+      lineHeight: {
+        tight: 'var(--line-height-tight)', normal: 'var(--line-height-normal)',
+        relaxed: 'var(--line-height-relaxed)',
+      },
+      letterSpacing: {
+        tight: 'var(--letter-spacing-tight)', normal: 'var(--letter-spacing-normal)',
+        wide: 'var(--letter-spacing-wide)',
+      },
+      spacing: {
+        '0': 'var(--space-0)', '1': 'var(--space-1)', '2': 'var(--space-2)',
+        '3': 'var(--space-3)', '4': 'var(--space-4)', '5': 'var(--space-5)',
+        '6': 'var(--space-6)', '8': 'var(--space-8)', '10': 'var(--space-10)',
+        '12': 'var(--space-12)', '16': 'var(--space-16)', '20': 'var(--space-20)',
+        '24': 'var(--space-24)', '32': 'var(--space-32)',
+      },
+      borderRadius: {
+        sm: 'var(--radius-sm)', md: 'var(--radius-md)', lg: 'var(--radius-lg)',
+        xl: 'var(--radius-xl)', '2xl': 'var(--radius-2xl)', full: 'var(--radius-full)',
+      },
+      boxShadow: {
+        'glass-sm': 'var(--shadow-glass-sm)', 'glass-md': 'var(--shadow-glass-md)',
+        'glass-lg': 'var(--shadow-glass-lg)', 'neu-raised': 'var(--shadow-neu-raised)',
+        'neu-inset': 'var(--shadow-neu-inset)', 'glow-rainbow': 'var(--glow-rainbow)',
+        'glow-cyan': 'var(--glow-cyan)',
+      },
+      transitionTimingFunction: {
+        'out-expo': 'var(--ease-out-expo)', 'in-expo': 'var(--ease-in-expo)',
+        elastic: 'var(--ease-elastic)', smooth: 'var(--ease-smooth)',
+        dramatic: 'var(--ease-dramatic)', spring: 'var(--ease-spring)',
+      },
+      transitionDuration: {
+        instant: 'var(--duration-instant)', fast: 'var(--duration-fast)',
+        normal: 'var(--duration-normal)', slow: 'var(--duration-slow)',
+        dramatic: 'var(--duration-dramatic)', ambient: 'var(--duration-ambient)',
+      },
+      zIndex: {
+        'fluid-canvas': 'var(--z-fluid-canvas)',
+        cursor: 'var(--z-cursor)',
+        'cursor-dot': 'var(--z-cursor-dot)',
+      },
+      animation: {
+        'blob-morph': 'blobMorph 10s ease-in-out infinite',
+        float: 'float 6s ease-in-out infinite',
+        'pulse-glow': 'pulseGlow 3s ease-in-out infinite',
+        glitch: 'glitch 0.3s ease-in-out infinite',
+        scanline: 'scanline 8s linear infinite',
+        shimmer: 'shimmer 2s linear infinite',
+        orbit: 'orbit 20s linear infinite',
+        'spin-slow': 'spin 3s linear infinite',
+        'bounce-slow': 'bounce 3s ease-in-out infinite',
+      },
+      keyframes: {
+        blobMorph: {
+          '0%, 100%': { borderRadius: '60% 40% 30% 70% / 60% 30% 70% 40%' },
+          '50%': { borderRadius: '30% 60% 70% 40% / 50% 60% 30% 60%' },
+        },
+        float: {
+          '0%, 100%': { transform: 'translateY(0)' },
+          '50%': { transform: 'translateY(-20px)' },
+        },
+        pulseGlow: {
+          '0%, 100%': { opacity: '0.5', filter: 'blur(40px)' },
+          '50%': { opacity: '0.8', filter: 'blur(60px)' },
+        },
+        glitch: {
+          '0%': { transform: 'translate(0)' },
+          '20%': { transform: 'translate(-2px, 2px)' },
+          '40%': { transform: 'translate(-2px, -2px)' },
+          '60%': { transform: 'translate(2px, 2px)' },
+          '80%': { transform: 'translate(2px, -2px)' },
+          '100%': { transform: 'translate(0)' },
+        },
+        scanline: {
+          '0%': { transform: 'translateY(-100%)' },
+          '100%': { transform: 'translateY(100%)' },
+        },
+        shimmer: {
+          '0%': { backgroundPosition: '-200% 0' },
+          '100%': { backgroundPosition: '200% 0' },
+        },
+        orbit: {
+          '0%': { transform: 'rotate(0deg)' },
+          '100%': { transform: 'rotate(360deg)' },
+        },
+      },
+      backdropBlur: { xs: '2px' },
+      aspectRatio: { '4/3': '4 / 3', '3/2': '3 / 2', '2/3': '2 / 3', '9/16': '9 / 16' },
+    },
+  },
+  plugins: [
+    require('@tailwindcss/typography'),
+    require('tailwindcss-animate'),
+  ],
+};
+
+export default config;
