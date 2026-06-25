@@ -2,33 +2,14 @@
 
 import { useNarrativeStore } from '@/lib/store';
 import { narrativeEngine } from '@/lib/narrative';
+import { Card, Badge, Button } from '@/components/ui';
+import { UI_STATE_LABELS } from '@/lib/constants';
 import type { ShowcaseItem } from '@/types';
 
 const ITEMS: ShowcaseItem[] = [
-  {
-    id: 'pristine',
-    title: 'Pristine State',
-    subtitle: 'Zero entropy. The garden at rest.',
-    tag: 'PHASE 01',
-    color: 'var(--color-rainbow-cyan)',
-    glowColor: 'rgba(51,204,255,0.2)',
-  },
-  {
-    id: 'corrupted',
-    title: 'Corruption Phase',
-    subtitle: 'Entropy bleeds through the seams.',
-    tag: 'PHASE 03',
-    color: 'var(--color-rainbow-red)',
-    glowColor: 'rgba(255,51,102,0.2)',
-  },
-  {
-    id: 'transcendent',
-    title: 'Transcendence',
-    subtitle: 'Chaos resolved into something new.',
-    tag: 'PHASE 06',
-    color: 'var(--color-rainbow-purple)',
-    glowColor: 'rgba(153,51,255,0.2)',
-  },
+  { id: 'pristine', title: 'Pristine State', subtitle: 'Zero entropy. The garden at rest.', tag: 'PHASE 01', color: 'var(--color-rainbow-cyan)', glowColor: 'rgba(51,204,255,0.2)' },
+  { id: 'corrupted', title: 'Corruption Phase', subtitle: 'Entropy bleeds through the seams.', tag: 'PHASE 03', color: 'var(--color-rainbow-red)', glowColor: 'rgba(255,51,102,0.2)' },
+  { id: 'transcendent', title: 'Transcendence', subtitle: 'Chaos resolved into something new.', tag: 'PHASE 06', color: 'var(--color-rainbow-purple)', glowColor: 'rgba(153,51,255,0.2)' },
 ];
 
 export function ShowcaseSection() {
@@ -38,46 +19,25 @@ export function ShowcaseSection() {
     <section id="showcase" className="relative py-32 px-4">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-16">
-          <p className="text-rainbow-cyan font-mono text-xs tracking-[0.3em] uppercase mb-4">
-            Narrative Arc
-          </p>
-          <h2 className="text-gradient-rainbow font-display font-bold text-4xl md:text-5xl mb-4">
-            Six States of Being
-          </h2>
+          <Badge variant="cyan" className="mb-4">Narrative Arc</Badge>
+          <h2 className="text-gradient-rainbow font-display font-bold text-4xl md:text-5xl mb-4">Six States of Being</h2>
         </div>
-
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
           {ITEMS.map((item) => (
-            <div
-              key={item.id}
-              className="glass-card p-8 text-center"
-              style={{ boxShadow: `0 0 40px ${item.glowColor}` }}
-            >
-              <p
-                className="font-mono text-xs tracking-widest mb-4"
-                style={{ color: item.color }}
-              >
-                {item.tag}
-              </p>
-              <h3 className="font-display font-bold text-2xl text-text-primary mb-2">
-                {item.title}
-              </h3>
+            <Card key={item.id} glow={item.glowColor} className="p-8 text-center">
+              <p className="font-mono text-xs tracking-widest mb-4" style={{ color: item.color }}>{item.tag}</p>
+              <h3 className="font-display font-bold text-2xl text-text-primary mb-2">{item.title}</h3>
               <p className="text-text-secondary text-sm">{item.subtitle}</p>
-            </div>
+            </Card>
           ))}
         </div>
-
         <div className="text-center">
           <p className="text-text-muted font-mono text-xs mb-4">
-            Current state:{' '}
-            <span className="text-rainbow-cyan">{uiState.toUpperCase()}</span>
+            Current state: <span className="text-rainbow-cyan">{(UI_STATE_LABELS[uiState] ?? uiState).toUpperCase()}</span>
           </p>
-          <button
-            onClick={() => narrativeEngine.advance()}
-            className="px-6 py-2 rounded-full border border-rainbow-purple/50 text-rainbow-purple text-sm hover:bg-rainbow-purple/10 transition-colors duration-300 font-mono tracking-widest focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rainbow-purple"
-          >
+          <Button variant="danger" size="sm" onClick={() => narrativeEngine.advance()}>
             ADVANCE STATE →
-          </button>
+          </Button>
         </div>
       </div>
     </section>
